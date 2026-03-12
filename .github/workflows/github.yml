@@ -22,7 +22,7 @@ jobs:
 
       - name: Create a new branch
         run: |
-            git checkout -b test
+            git checkout -b test-${{github.run_id}}
       
       - name: Create a new .txt file
         run: |
@@ -35,7 +35,7 @@ jobs:
             echo "REPOSITORY: ${{github.repository}}" >>fisier.txt
             git add fisier.txt
             git commit -m "added fisier.txt"
-            git push origin test
+            git push origin test-${{github.run_id}}
 
 
       - name: Create PR with gh pr create
