@@ -44,7 +44,7 @@ jobs:
         run: |
             gh pr create \
               --base main \
-              --head test-{{github.run_id}} \
+              --head test-${{github.run_id}} \
               --title "Example" \
               --body "PR created automatically by git actions" \
               --label "github-automation"
