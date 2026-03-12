@@ -19,6 +19,25 @@ jobs:
       - name: Create a new .txt file
         run: |
             touch fisier.txt
+
+      - name: Put info inside the file and commit the file
+        run: |
+            echo "RUN ID:  ${{github.run_id}}" > fisier.txt
+            echo "ACTOR: ${{github.actor}}"  >> fisier.txt
+            echo "REPOSITORY: ${{github.repository}}" >>fisier.txt
+            git add fisier.txt
+            git commit -m "added fisier.txt"
+            git push origin main
+
+
+      - name: Create PR with gh pr create
+        run: |
+            gh pr create \
+              --base main \
+              --head test \
+              --title "Example" \
+              --body "PR created automatically by git actions" \
+              --label "github-automation"
             
       
         
